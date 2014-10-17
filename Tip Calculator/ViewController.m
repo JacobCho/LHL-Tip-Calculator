@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 
+
 @interface ViewController ()
 
 @end
@@ -16,12 +17,27 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+
+
+- (IBAction)calculateTip:(UIButton *)sender {
+    
+    double billAmount = [self.billAmountTextField.text integerValue];
+    
+    double tipPercent = [self.tipPercentageTextField.text floatValue] / 100;
+    
+    double tipAmount = billAmount * tipPercent;
+    
+    
+    self.tipAmountLabel.text =  [NSString stringWithFormat:@"%.2f",tipAmount];
+    
 }
 
+- (IBAction)sliderValueChanged:(UISlider *)sender {
+    
+    
+    self.tipPercentageTextField.text = [NSString stringWithFormat:@"%.2f", self.tipSlider.value];
+}
 @end
